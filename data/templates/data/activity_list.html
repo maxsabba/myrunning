@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Activity List</title>
+</head>
+<body>
+    <h1>Activity List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Duration</th>
+            <!-- Add more columns as per your requirement -->
+        </tr>
+        {% for activity in activities %}
+        <tr>
+            <td>{{ activity.id }}</td>
+            <td>{{ activity.user_id }}</td>
+            <td>{{ activity.duration }}</td>
+            <!-- Add more columns as per your requirement -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
