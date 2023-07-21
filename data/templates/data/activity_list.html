@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
 <head>
     <title>Activity List</title>
 </head>
 <body>
     <h1>Activity List</h1>
-    <table>
+    <table style="width:100%">
         <tr>
             <th>ID</th>
             <th>User ID</th>
             <th>Duration</th>
+            <th>KCalories</th>
             <!-- Add more columns as per your requirement -->
         </tr>
         {% for activity in activities %}
@@ -17,6 +23,7 @@
             <td>{{ activity.id }}</td>
             <td>{{ activity.user_id }}</td>
             <td>{{ activity.duration }}</td>
+            <td>{{ activity.calories }}</td>
             <!-- Add more columns as per your requirement -->
         </tr>
         {% endfor %}

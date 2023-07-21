@@ -70,8 +70,9 @@ class HeartRateZone(models.Model):
     name = models.CharField(max_length=20)
     distance = models.IntegerField()
     duration = models.IntegerField()
-    minimum_heart_rate = models.IntegerField()
-    maximum_heart_rate = models.IntegerField()
+    minimum_heart_rate = models.IntegerField(default=0)
+    maximum_heart_rate = models.IntegerField(default=0)
+    
 
 
 class Steps(models.Model):
@@ -95,4 +96,7 @@ class InitialValues(models.Model):
 class Origin(models.Model):
     activity = models.OneToOneField(Activity, primary_key=True, on_delete=models.CASCADE)
     device_name = models.CharField(max_length=20)
+    vendor = models.CharField(max_length=20, null=True)
+    os_version = models.CharField(max_length=20, null=True)
+
    
