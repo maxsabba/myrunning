@@ -2,6 +2,7 @@
 *.pyc
 *~
 __pycache__
+list.txt
 
 # Env
 .env

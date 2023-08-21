@@ -1,0 +1,147 @@
+{
+    "version": 5,
+    "duration": 2027000,
+    "pause": 0,
+    "calories": 302,
+    "dehydration_volume": 398,
+    "plausible": true,
+    "start_time_timezone_offset": 3600000,
+    "end_time_timezone_offset": 3600000,
+    "tracking_method": "tracked",
+    "start_time": 1678619876000,
+    "end_time": 1678621903000,
+    "user_perceived_start_time": 1678623476000,
+    "user_perceived_end_time": 1678625503000,
+    "created_at": 1678621905000,
+    "updated_at": 1678621905000,
+    "features": [
+        {
+            "type": "weather",
+            "attributes": {
+                "conditions": "sunny",
+                "temperature": 14.0,
+                "wind_speed": 14.0,
+                "wind_direction": 110.0,
+                "humidity": 63.0
+            }
+        },
+        {
+            "type": "map",
+            "attributes": {
+                "encoded_trace": "wiqqGceq~@?A{@cCqA\\`@tBrAt@tAu@lA}@dAoAhAsAnA_AXcBiAcAuAz@mAjAmAx@gAxAiA@iAv@`@lBz@~@nBg@hAgAfA_BdAqAtAy@VoBiAaAuAdAmAhAoAbAiApAcABeAv@`@lBx@~@`Bi@lAcAhAmA`AuAlAgA|@sAkAgBsA`AkAdAoAv@iAnAcA~@qAQNrBh@dBbBa@pAw@rAy@~@gBhAiAlAy@o@{BkALmAfAiA`AkA`AiAz@aAQo@xAh@jB`Ab@tA_@lAgAhAmAz@uAlA}@`AmAsAoBkAt@iAjAkA`AkAbAmAx@aA_@CjBh@nBlA?zAK|@cBfAsA|@oAjA{@VcBgAiAiAnAgA`AiAz@gAhAmAh@kAOJbBh@pBnAQg@_C{@sA@pB^hA",
+                "trace_available": true,
+                "start_latitude": 44.98604202270508,
+                "start_longitude": "10.415064811706543"
+            }
+        },
+        {
+            "type": "track_metrics",
+            "attributes": {
+                "distance": 5329,
+                "average_speed": "2.6290083867784904",
+                "average_pace": 0.3803715518859073,
+                "max_speed": "3.5128143098619247",
+                "elevation_gain": 0,
+                "elevation_loss": 0
+            }
+        },
+        {
+            "type": "heart_rate",
+            "attributes": {
+                "average": 167,
+                "maximum": 181,
+                "trace_available": true,
+                "zones": [
+                    {
+                        "name": "easy",
+                        "distance": 0,
+                        "duration": 0,
+                        "minimum_heart_rate": 120,
+                        "maximum_heart_rate": 129
+                    },
+                    {
+                        "name": "fat_burning",
+                        "distance": 0,
+                        "duration": 0,
+                        "minimum_heart_rate": 129,
+                        "maximum_heart_rate": 138
+                    },
+                    {
+                        "name": "aerobic",
+                        "distance": 0,
+                        "duration": 0,
+                        "minimum_heart_rate": 138,
+                        "maximum_heart_rate": 147
+                    },
+                    {
+                        "name": "anaerobic",
+                        "distance": 889,
+                        "duration": 335997,
+                        "minimum_heart_rate": 147,
+                        "maximum_heart_rate": 156
+                    },
+                    {
+                        "name": "red_line",
+                        "distance": 4440,
+                        "duration": 1690232,
+                        "minimum_heart_rate": 156,
+                        "maximum_heart_rate": 255
+                    },
+                    {
+                        "name": "not_in_zone",
+                        "distance": 0,
+                        "duration": 771
+                    }
+                ]
+            }
+        },
+        {
+            "type": "steps",
+            "attributes": {
+                "average_step_rate": 135,
+                "maximum_step_rate": 165,
+                "total_steps": 4620,
+                "average_step_length": 115
+            }
+        },
+        {
+            "type": "initial_values",
+            "attributes": {
+                "distance": 5329,
+                "duration": 2027000,
+                "pause": 0,
+                "sport_type": {
+                    "id": "19",
+                    "type": "sport_type"
+                },
+                "start_time": 1678619876000,
+                "end_time": 1678621903000
+            }
+        },
+        {
+            "type": "origin",
+            "attributes": {
+                "device": {
+                    "name": "iPhone14,5",
+                    "vendor": "Apple",
+                    "os_version": "iOS 16.3.1"
+                }
+            }
+        },
+        {
+            "type": "groups",
+            "attributes": {
+                "groups": [
+                    {
+                        "id": "c29a4262-d174-483c-a89a-f6880ce97a36",
+                        "type": "group"
+                    }
+                ]
+            }
+        }
+    ],
+    "id": "a8985923-e4fe-4ba7-a9ff-89431535849f",
+    "user_id": "D32E86R1JRWI0ZRG",
+    "sport_type_id": "19",
+    "creation_application_id": "3144"
+}
