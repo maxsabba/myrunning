@@ -99,4 +99,10 @@ class Origin(models.Model):
     vendor = models.CharField(max_length=20, null=True)
     os_version = models.CharField(max_length=20, null=True)
 
+class Groups(models.Model):
+    activity = models.OneToOneField(Activity, primary_key=True, on_delete=models.CASCADE)
+    id = models.CharField(max_length=250, null=True)
+    type = models.CharField(max_length=250, null=True)
+
+
    

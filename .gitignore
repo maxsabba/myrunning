@@ -3,6 +3,7 @@
 *~
 __pycache__
 list.txt
+json_data/
 
 # Env
 .env
