@@ -5,6 +5,11 @@ from pathlib import Path
 import fnmatch
 import data.writedatadb as wdb
 
+"""
+This module parse folder where JSON are located. for each JSON check the structure
+and call the function on module writedatadb.py
+"""
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myrunning.settings')
 django.setup()
 
@@ -24,62 +29,58 @@ for entry in entries.iterdir():
             #print(activity_data)
             object_id = wdb.write_activity(activity_data)
             
-            """ Create weather entry """
-            weather_data = activity_data['features'][0]['attributes']
-            wdb.write_weather(weather_data, object_id)   
+            """ following block check nunber of items inside activity_data['features'] """
 
-            """ Create Map entry """  
-            map_data = activity_data['features'][1]['attributes']
-            wdb.write_map(map_data, object_id)
+            feature_item = len(activity_data['features']) - 1
+            feature_range = range(0, feature_item)
+            for key, value in activity_data.items():
+                if feature_item in feature_range:
+                    type_value = data['features'][feature_item]['type']
+                    feature_item -= 1
+                    if type_value == 'weather':
+                        """ Create weather entry """
+                        weather_data = activity_data['features'][feature_item]['attributes']
+                        wdb.write_weather(weather_data, object_id)
+                    elif type_value == 'map':
+                        """ Create Map entry """  
+                        map_data = activity_data['features'][feature_item]['attributes']
+                        wdb.write_map(map_data, object_id)
+                    elif type_value == 'track_metrics':
+                        """ Create TrackMetrics entry """
+                        track_metrics_data = activity_data['features'][feature_item]['attributes']
+                        wdb.write_map(track_metrics_data, object_id)
+                    elif type_value == 'fastest_segments':
+                        """ Create FastestSegment entry """
+                        fastest_segment_data = activity_data['features'][feature_item]['attributes']['segments'][0]
+                        wdb.write_map(fastest_segment_data, object_id)
+                    elif type_value == 'heart_rate':
+                        """ Create HeartRate entry """
+                        heart_rate_data = activity_data['features'][feature_item]['attributes']
+                        wdb.write_map(heart_rate_data, object_id)
+                    elif type_value == 'steps':
+                        """ Create Steps entry """
+                        steps_data = activity_data['features'][feature_item]['attributes']
+                        wdb.write_map(steps_data, object_id)
+                    elif type_value == 'initial_values':
+                        """ Create InitialValues entry """
+                        initial_values_data = activity_data['features'][feature_item]['attributes']
+                        wdb.write_map(steps_data, object_id)
+                    elif type_value == 'origin':
+                        """ Create Origin entry """
+                        origin_data = activity_data['features'][feature_item]['attributes']['device']
+                        wdb.write_map(origin_data, object_id)
+                    elif type_value == 'groups':
+                        """ Create Groups entry """
+                        grop_data = activity_data['features'][feature_item]['attributes']['groups']
+                        wdb.write_map(grop_data, object_id)
 
-            """ Create TrackMetrics entry """
-            track_metrics_data = activity_data['features'][2]['attributes']
-            wdb.write_map(track_metrics_data, object_id)
-
-            """ Create FastestSegment entry """
-            fastest_segment_data = activity_data['features'][3]['attributes']['segments'][0]
-            wdb.write_map(fastest_segment_data, object_id)
-
-            """ Create HeartRate entry """
-            heart_rate_data = activity_data['features'][4]['attributes']
-            wdb.write_map(heart_rate_data, object_id)
-
-            """ reate HeartRateZone entries """
+            """ End of block """            
+ 
+        """  heareate HeartRateZone entries 
             heart_rate_zones_data = activity_data['features'][4]['attributes']['zones'] 
             wdb.write_map(heart_rate_zones_data, object_id)
 
-            """ Create Steps entry """
-            steps_data = activity_data['features'][5]['attributes']
-            wdb.write_map(steps_data, object_id)
+        """
 
-            """ Create InitialValues entry """
-            initial_values_data = activity_data['features'][6]['attributes']
-            wdb.write_map(steps_data, object_id)
-
-            """ Create Origin entry """
-            origin_data = activity_data['features'][7]['attributes']['device']
-            wdb.write_map(origin_data, object_id)
-
-            """ Create Groups entry """
-            grop_data = activity_data['features'][8]['attributes']['groups']
-            wdb.write_map(grop_data, object_id)
-                         
-        """ 
+           
      
-        
-
-        # Create Groups entry
-        try:
-            origin_data = activity_data['features'][8]['attributes']['groups']
-            origin = Origin.objects.create(
-                activity=activity,
-                id=origin_data['id'],
-                type=origin_data['type'],
-            )
-        except Exception as error:
-            with open("list.txt","a") as list:
-                list.write(str(entry) +";" + str(error) +';' +"\n")
-   
- """
-
-       
