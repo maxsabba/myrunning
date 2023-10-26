@@ -22,6 +22,7 @@ entries = Path('/Users/massimosabbadini/PythonProjects/myrunning/data/json_data'
 for entry in entries.iterdir():
     if fnmatch.fnmatch(entry, '*.json'):
         with open(entry, 'r') as file:
+            print(f"questo è l'ultimo file: {file}")
             data = json.load(file)
                     
             """ Create Activity entry """

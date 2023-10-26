@@ -119,7 +119,6 @@ def write_trackmetrics(data, activity):
 def write_fastestsegment(data, activity):
     print("I'm write FastSegment items!!!")
     # I'm writing into FastestSegment table
-    #fastest_segment_data = data['features'][3]['attributes']['segments'][0]
     fastest_segment_data = data
     fastest_segment = FastestSegment.objects.create(
         activity=activity,
@@ -131,7 +130,6 @@ def write_fastestsegment(data, activity):
 def write_heartrate(data, activity):
     print("I'm write HeartRate items!!!")
     # I'm wrintin into HeartRate table
-    #heart_rate_data = data['features'][4]['attributes']
     heart_rate_data = data
     heart_rate = HeartRate.objects.create(
         activity=activity,
@@ -166,7 +164,6 @@ def write_heartratezones(data, activity):
 def write_steps(data, activity):
     print("I'm write Steps items!!!")
     # I'm writ into Steps table
-    #steps_data = data['features'][5]['attributes']
     steps_data = data
     steps = Steps.objects.create(
         activity=activity,
@@ -179,22 +176,31 @@ def write_steps(data, activity):
 def write_initialvalues(data, activity):
     print("I'm write IntialValues items!!!")
     # I'm wrinting into InitialValues table
-    #initial_values_data = data['features'][6]['attributes']
     initial_values_data = data
-    initial_values = InitialValues.objects.create(
-        activity=activity,
-        distance=initial_values_data['distance'],
-        duration=initial_values_data['duration'],
-        pause=initial_values_data['pause'],
-        sport_type=initial_values_data['sport_type'],
-        start_time=initial_values_data['start_time'],
-        end_time=initial_values_data['end_time']
-    )
+    try:
+        initial_values = InitialValues.objects.create(
+            activity=activity,
+            distance=initial_values_data['distance'],
+            duration=initial_values_data['duration'],
+            pause=initial_values_data['pause'],
+            sport_type=initial_values_data['sport_type'],
+            start_time=initial_values_data['start_time'],
+            end_time=initial_values_data['end_time']
+        )
+    except KeyError:
+        initial_values = InitialValues.objects.create(
+            activity=activity,
+           # distance=initial_values_data['distance'],
+            duration=initial_values_data['duration'],
+            pause=initial_values_data['pause'],
+            sport_type=initial_values_data['sport_type'],
+            start_time=initial_values_data['start_time'],
+            end_time=initial_values_data['end_time']
+        )
 
 def write_origin(data, activity):
     print("I'm write Origin items!!!")
     # I'm writing into Origin table
-    #origin_data = data['features'][7]['attributes']['device']
     origin_data = data
     origin = Origin.objects.create(
         activity=activity,
