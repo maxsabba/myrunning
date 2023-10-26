@@ -1,3 +1,4 @@
+
 import os
 import json
 import django
@@ -12,7 +13,7 @@ This module will be used to write json data to db.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myrunning.settings')
 django.setup()
 
-from data.models import Activity, Weather, Map, TrackMetrics, FastestSegment, HeartRate, HeartRateZone, Steps, InitialValues, Origin, Groups
+from data.models import Activity, Weather, Map, TrackMetrics, FastestSegment, HeartRate, HeartRateZone, Steps, InitialValues, Origin
 
 def write_activity(data):
     """ 
@@ -20,7 +21,7 @@ def write_activity(data):
     update using 'except' session.
     Remeber to manage this issue!!!!!!!!!!!!!!!!!
     """
-    # print(f"questo è il contenuto passato: {data}")
+    print("I'm write Activity items!!!")
     activity_data = data
     # I'm writing into Activity table
     try:
@@ -70,11 +71,13 @@ def write_activity(data):
         created_at=activity_data['created_at'],
         updated_at=activity_data['updated_at']
         )
+    
     return(activity)
         
-    print("DB Updated!!!")
+    #print("DB Updated!!!")
 
 def write_weather(data, activity):
+    print("I'm write Weather items!!!")
     activity_data = data
     # I'm writing into Weather table
     weather_data = data
@@ -88,6 +91,7 @@ def write_weather(data, activity):
     )
 
 def write_map(data, activity):
+    print("I'm write Map items!!!")
     # I'm writing into Map table
     map_data = data
     map = Map.objects.create(
@@ -99,8 +103,9 @@ def write_map(data, activity):
     )
 
 def write_trackmetrics(data, activity):
+    print("I'm write TrackMetrics items!!!")
     # I'm writin into TrackMetrics table
-    track_metrics_data = data['features'][2]['attributes']
+    track_metrics_data = data
     track_metrics = TrackMetrics.objects.create(
         activity=activity,
         distance=track_metrics_data['distance'],
@@ -112,8 +117,10 @@ def write_trackmetrics(data, activity):
     )
 
 def write_fastestsegment(data, activity):
+    print("I'm write FastSegment items!!!")
     # I'm writing into FastestSegment table
-    fastest_segment_data = data['features'][3]['attributes']['segments'][0]
+    #fastest_segment_data = data['features'][3]['attributes']['segments'][0]
+    fastest_segment_data = data
     fastest_segment = FastestSegment.objects.create(
         activity=activity,
         distance=fastest_segment_data['distance'],
@@ -122,8 +129,10 @@ def write_fastestsegment(data, activity):
     )
 
 def write_heartrate(data, activity):
+    print("I'm write HeartRate items!!!")
     # I'm wrintin into HeartRate table
-    heart_rate_data = data['features'][4]['attributes']
+    #heart_rate_data = data['features'][4]['attributes']
+    heart_rate_data = data
     heart_rate = HeartRate.objects.create(
         activity=activity,
         average=heart_rate_data['average'],
@@ -132,30 +141,33 @@ def write_heartrate(data, activity):
     )
 
 def write_heartratezones(data, activity):
-    # I'm writinf into HeartRateZone table
-    heart_rate_zones_data = data['features'][4]['attributes']['zones']                                                        
-    for zone_data in heart_rate_zones_data:
-        minimum_heart_rate = zone_data.get('minimum_heart_rate')  # Get the value if present or None
-        maximum_heart_rate = zone_data.get('maximum_heart_rate')  # Get the value if present or None
-
-        # Provide default values if the keys are missing
-        if minimum_heart_rate is None:
-            minimum_heart_rate = 0
-        if maximum_heart_rate is None:
-            maximum_heart_rate = 0
-
+    zone_data = data
+    # I'm writing into HeartRateZone table
+                                                       
+    try:        
         HeartRateZone.objects.create(
-            activity=activity,
-            name=zone_data['name'],
-            distance=zone_data['distance'],
-            duration=zone_data['duration'],
-            minimum_heart_rate=minimum_heart_rate,
-            maximum_heart_rate=maximum_heart_rate
-        )
-
+                activity=activity,
+                name=zone_data['name'],
+                distance=zone_data['distance'],
+                duration=zone_data['duration'],
+                minimum_heart_rate=zone_data['minimum_heart_rate'],
+                maximum_heart_rate=zone_data['maximum_heart_rate']
+            )
+    except KeyError:
+        HeartRateZone.objects.create(
+                activity=activity,
+                name=zone_data['name'],
+                distance=zone_data['distance'],
+                duration=zone_data['duration'],
+               # minimum_heart_rate=zone_data['minimum_heart_rate'],
+               # maximum_heart_rate=zone_data['maximum_heart_rate']
+            )
+  
 def write_steps(data, activity):
+    print("I'm write Steps items!!!")
     # I'm writ into Steps table
-    steps_data = data['features'][5]['attributes']
+    #steps_data = data['features'][5]['attributes']
+    steps_data = data
     steps = Steps.objects.create(
         activity=activity,
         average_step_rate=steps_data['average_step_rate'],
@@ -165,8 +177,10 @@ def write_steps(data, activity):
     )
 
 def write_initialvalues(data, activity):
+    print("I'm write IntialValues items!!!")
     # I'm wrinting into InitialValues table
-    initial_values_data = data['features'][6]['attributes']
+    #initial_values_data = data['features'][6]['attributes']
+    initial_values_data = data
     initial_values = InitialValues.objects.create(
         activity=activity,
         distance=initial_values_data['distance'],
@@ -178,21 +192,13 @@ def write_initialvalues(data, activity):
     )
 
 def write_origin(data, activity):
+    print("I'm write Origin items!!!")
     # I'm writing into Origin table
-    origin_data = data['features'][7]['attributes']['device']
+    #origin_data = data['features'][7]['attributes']['device']
+    origin_data = data
     origin = Origin.objects.create(
         activity=activity,
         device_name=origin_data['name'],
         vendor=origin_data['vendor'],
         os_version=origin_data['os_version']
     )
-
-def write_gropus(data, activity):
-    # I'm writing Groups table    
-    origin_data = data['features'][8]['attributes']['groups']
-    origin = Origin.objects.create(
-        activity=activity,
-        id=origin_data['id'],
-        type=origin_data['type'],
-    )
-     

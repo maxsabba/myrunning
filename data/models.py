@@ -70,8 +70,8 @@ class HeartRateZone(models.Model):
     name = models.CharField(max_length=20, null=True)
     distance = models.IntegerField(null=True)
     duration = models.IntegerField(null=True)
-    minimum_heart_rate = models.IntegerField(default=0, null=True)
-    maximum_heart_rate = models.IntegerField(default=0,null=True)
+    minimum_heart_rate = models.IntegerField(null=True)
+    maximum_heart_rate = models.IntegerField(null=True)
     
 
 
@@ -99,10 +99,10 @@ class Origin(models.Model):
     vendor = models.CharField(max_length=20, null=True)
     os_version = models.CharField(max_length=20, null=True)
 
-class Groups(models.Model):
-    activity = models.OneToOneField(Activity, primary_key=True, on_delete=models.CASCADE)
-    id = models.CharField(max_length=250, null=True)
-    type = models.CharField(max_length=250, null=True)
+# class Groups(models.Model):
+#     activity = models.OneToOneField(Activity, primary_key=True, on_delete=models.CASCADE)
+#     id = models.CharField(max_length=250, null=True)
+#     user_id = models.CharField(max_length=250, null=True)
+#     sport_type_id = models.IntegerField(max_length=20, null=True)
+#     creation_application_id = models.IntegerField(max_length=20, null=True)
 
-
-   

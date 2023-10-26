@@ -1,3 +1,8 @@
+"""
+Primo esempio di importazione dei file Json,
+i file Json non sempre hanno lo stesso numero di campi.
+
+"""
 import os
 import json
 import django
