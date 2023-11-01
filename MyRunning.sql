@@ -1,29 +1,12 @@
-SELECT *
+SELECT da.created_at , da.start_time , da.duration, di.distance 
 FROM data_activity da 
+inner join data_initialvalues di on da.id =di.activity_id 
 
-SELECT *
-FROM data_fastestsegment df 
+WHERE da.id = '313a6dc2d3684c6799a2324c35a5edcd'
 
-SELECT *
-FROM data_heartrate dh 
 
-SELECT *
-FROM data_heartratezone dh 
+
 
 SELECT *
 FROM data_initialvalues di 
 
-SELECT *
-FROM data_map dm 
-
-SELECT *
-FROM data_origin do 
-
-SELECT *
-FROM data_steps ds 
-
-SELECT *
-FROM data_trackmetrics dt 
-
-SELECT *
-FROM data_weather dw 

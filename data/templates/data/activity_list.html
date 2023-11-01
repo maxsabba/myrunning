@@ -12,26 +12,23 @@
     <h1>Activity List</h1>
     <table style="width:100%">
         <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Duration</th>
-            <th>KCalories</th>
+            <th>Data</th>
+            <th>Ora</th>
+            <th>Durata</th>
+            <th>Distanza</th>
             <!-- Add more columns as per your requirement -->
         </tr>
         {% for activity in activities %}
         <tr>
-            <td>{{ activity.id }}</td>
-            <td>{{ activity.user_id }}</td>
+            <td>{{ activity.created_at }}</td>
+            <td>{{ activity.start_time }}</td>
             <td>{{ activity.duration }}</td>
-            <td>{{ activity.calories }}</td>
+            <td>{{ activity.initialvalues_distance }}</td>
             <!-- Add more columns as per your requirement -->
         </tr>
+       
         {% endfor %}
     </table>
-    <br>
-    {% csfr_token %}
-    <form method="post">
-        <button type="submit" name="run_script">Run Script</button>
-    </form>
+   
 </body>
 </html>
