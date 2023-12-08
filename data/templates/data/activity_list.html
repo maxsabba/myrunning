@@ -12,23 +12,23 @@
     <h1>Activity List</h1>
     <table style="width:100%">
         <tr>
-            <th>Data</th>
-            <th>Ora</th>
-            <th>Durata</th>
-            <th>Distanza</th>
+            
+            <th>Data/Ora inizio</th>
+            <th>Durata (Minuti)</th>
+            <th>Distanza (metri)</th>
+            <th>Velocità media (Km/h)</th>
             <!-- Add more columns as per your requirement -->
         </tr>
         {% for activity in activities %}
         <tr>
-            <td>{{ activity.created_at }}</td>
-            <td>{{ activity.start_time }}</td>
+            <!--<td>{{ activity.created_at|date:"Y-m-d H:i:s" }}</td> -->
+            <td>{{ activity.start_time|date:"Y-m-d H:i:s" }}</td>
             <td>{{ activity.duration }}</td>
             <td>{{ activity.initialvalues_distance }}</td>
+            <td>{{ activity.trackmetrics_average_speed }}</td>
             <!-- Add more columns as per your requirement -->
         </tr>
-       
         {% endfor %}
-    </table>
-   
+    </table>  
 </body>
 </html>

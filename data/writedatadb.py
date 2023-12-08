@@ -1,9 +1,6 @@
 
 import os
-import json
 import django
-from pathlib import Path
-import fnmatch
 
 """
 This module will be used to write json data to db. 
@@ -21,7 +18,7 @@ def write_activity(data):
     update using 'except' session.
     Remeber to manage this issue!!!!!!!!!!!!!!!!!
     """
-    print("I'm write Activity items!!!")
+    # print("I'm write Activity items!!!")
     activity_data = data
     # I'm writing into Activity table
     try:
@@ -77,7 +74,7 @@ def write_activity(data):
     #print("DB Updated!!!")
 
 def write_weather(data, activity):
-    print("I'm write Weather items!!!")
+    # print("I'm write Weather items!!!")
     activity_data = data
     # I'm writing into Weather table
     weather_data = data
@@ -91,7 +88,7 @@ def write_weather(data, activity):
     )
 
 def write_map(data, activity):
-    print("I'm write Map items!!!")
+    # print("I'm write Map items!!!")
     # I'm writing into Map table
     map_data = data
     map = Map.objects.create(
@@ -117,7 +114,7 @@ def write_trackmetrics(data, activity):
     )
 
 def write_fastestsegment(data, activity):
-    print("I'm write FastSegment items!!!")
+    # print("I'm write FastSegment items!!!")
     # I'm writing into FastestSegment table
     fastest_segment_data = data
     fastest_segment = FastestSegment.objects.create(
@@ -128,7 +125,7 @@ def write_fastestsegment(data, activity):
     )
 
 def write_heartrate(data, activity):
-    print("I'm write HeartRate items!!!")
+    # print("I'm write HeartRate items!!!")
     # I'm wrintin into HeartRate table
     heart_rate_data = data
     heart_rate = HeartRate.objects.create(
@@ -162,7 +159,7 @@ def write_heartratezones(data, activity):
             )
   
 def write_steps(data, activity):
-    print("I'm write Steps items!!!")
+    # print("I'm write Steps items!!!")
     # I'm writ into Steps table
     steps_data = data
     steps = Steps.objects.create(
@@ -174,7 +171,7 @@ def write_steps(data, activity):
     )
 
 def write_initialvalues(data, activity):
-    print("I'm write IntialValues items!!!")
+    # print("I'm write IntialValues items!!!")
     # I'm wrinting into InitialValues table
     initial_values_data = data
     try:
@@ -199,7 +196,7 @@ def write_initialvalues(data, activity):
         )
 
 def write_origin(data, activity):
-    print("I'm write Origin items!!!")
+    # print("I'm write Origin items!!!")
     # I'm writing into Origin table
     origin_data = data
     origin = Origin.objects.create(
